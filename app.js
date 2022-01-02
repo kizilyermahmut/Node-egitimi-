@@ -6,9 +6,13 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var movieRouter = require('./routes/movie');
+var directorRouter = require('./routes/director');
+
 
 var app = express();
 var mongoose = require('mongoose');
+const config = require('./config');
+app.set('api_secret_key', config.api_secret_key);
 
 mongoose.connect('mongodb://localhost/config')
   .then(() =>{
@@ -17,6 +21,9 @@ mongoose.connect('mongodb://localhost/config')
   .catch((err) =>{
     console.log('MongoDb bağlantı hatası.')
   })
+
+//Middleware ekleme
+const verifyToken = require('./middleware/verifyToken');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,7 +36,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/api', verifyToken);
 app.use('/api/movies', movieRouter);
+app.use('/api/directors', directorRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,19 +1,40 @@
 {
-  "name": "node-egitimi",
+  "name": "egitimi",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "node ./bin/www",
+    "start:dev": "nodemon ./bin/www",
+    "test": "mocha --exit --recursive"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "generator": "^1.0.1",
+    "glob": "^7.2.0",
     "http-errors": "~1.6.3",
     "jade": "^0.31.2",
+    "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.2.2",
-    "mongoose": "^6.1.3",
+    "mongoose": "^6.1.4",
     "morgan": "~1.9.1",
     "nodemon": "^2.0.15"
-  }
+  },
+  "description": "[![Build status](https://api.travis-ci.org/meseven/node-egitimi-movie-api.svg)](https://travis-ci.org/meseven/node-egitimi-movie-api)",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kizilyermahmut/Node-egitimi-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kizilyermahmut/Node-egitimi-/issues"
+  },
+  "homepage": "https://github.com/kizilyermahmut/Node-egitimi-#readme"
 }
